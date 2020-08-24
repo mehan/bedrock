@@ -4,7 +4,7 @@
 
 {% extends "firefox/base/base-protocol.html" %}
 
-{% from "macros-protocol.html" import feature_card with context %}
+{% from "macros-protocol.html" import card, hero with context %}
 
 {% block page_title %}Unfck{% endblock %}
 
@@ -14,59 +14,90 @@
 
 {% block body_id %}firefox-unfck{% endblock %}
 
-{% set referrals = '?utm_source=www.mozilla.org&utm_medium=referral&utm_campaign=firefox-home' %}
+{% set referrals = '?utm_source=www.mozilla.org&utm_medium=referral&utm_campaign=firefox-unfck' %}
 
 {% block content %}
 <main role="main" class="t-unfck">
-  <section class="mzp-c-hero">
-    <div class="mzp-l-content ">
-      <div class="mzp-c-hero-body">
-        <h1 class="mzp-c-hero-title">The Internet Fck Yeah</h1>
 
-        <div class="mzp-c-hero-desc">
-          <p>It's an amazing place. But we can all feel the way it's fcked, too. The first and easiest thing you can do to unfck it? Start using a non-profit-backed browser that doesn't spy on its users</p>
-        </div>
 
-        <p class="mzp-c-hero-cta">
-          <a class="mzp-c-button mzp-t-product" href="#">Download Firefox</a>
-        </p>
+  {% call hero(
+    title='The Internet Fck Yeah',
+    desc='It’s an amazing place. But we can all feel the way it’s fcked, too. The first and easiest thing you can do to unfck it? Start using a non-profit-backed browser that doesn’t spy on its users',
+    class='mzp-t-firefox mzp-t-dark',
+    include_cta=True,
+    heading_level=1)
+  %}
+    {{ download_firefox(download_location='primary cta') }}
+  {% endcall %}
+
+  <h2 class="c-section-title">The Unfucking Checklist</h2>
+
+  <div class="mzp-l-content mzp-t-content-lg">
+
+    {% macro choice(label, info, link_text, link_url, id) -%}
+    <div class="mzp-c-choice t-choice-unfck" id="{{ id }}">
+      <input class="mzp-c-choice-control" type="checkbox" id="check-{{ id }}">
+      <label class="mzp-c-choice-label" for="check-{{ id }}">{{ label }}</label>
+      <div class="mzp-c-choice-info">
+        <img class="choice-unfck-img" src="" height="80" width="80">
+        <p>{{ info }}</p>
+        {# TODO, no referrals or rel if not external link #}
+        <p><a href="{{ link_url }}{{ referrals }}" class="mzp-c-cta-link" rel="external noopener" data-cta-type="link" data-cta-text="Checklist: {{ id }}">{{ link_text }}</a></p>
       </div>
     </div>
+    {%- endmacro %}
 
-  </section>
+    {{ choice(
+      'Take action online. Change the outcome offline',
+      'Where you live is one fo the most common data points used to target you online. Join us in changing your location on FB and Insta to Waco, TX, so we can throw off political ads and shine a light on voter suppression.',
+      'See how it works',
+      '#',
+      'location'
+    ) }}
 
-
-  <div class="mzp-l-content">
-    <h2>The Unfucking Checklist</h2>
-    <label><input type="checkbox"> Action one</label>
-    <p>That's like Oshawa winning the Stanley Cup. This is the difference between moose and Toronto Maple Leaf, eh? Drake will boot us out of Timmins and we'll have no place to sleep, eh? Ah, tell it to your pumpkin, Morley Safer. It's time Harvey’s joined the 20th century.</p>
-    <p><a href="#" class="mzp-c-cta-link">Link one</a></p>
-    <label><input type="checkbox"> Action two</label>
-    <p>That's like Newfoundland winning the Stanley Cup. Geez, a tunnel to Quispamsis!  Take off, how convenient! In Canada, snowmobiles only go up in price. Anyone knows that. Even Gordie Howe knows that. Watch your step and remember, Avril Lavigne is watching you. It's in the Canadian Criminal Code, eh. Like there's legal loonie set in cases in law, eh?</p>
-    <p><a href="#" class="mzp-c-cta-link">Link two</a></p>
+    {{ choice(
+      'Netflix and change',
+      'Watch The Social Dilemma on Netflix, a doc made with our friends at the CEnter for Humane Tech. It explains this whol data situation in words and actions real people can understand.',
+      'Watch the doc',
+      '#',
+      'netflix'
+    ) }}
   </div>
 
-  <div class="mzp-l-content">
-    <section class="mzp-c-card-feature mzp-has-aspect-3-2 mzp-l-card-feature-right-half">
-      <div class="mzp-c-card-feature-media-wrapper">
-        <div class="mzp-c-card-feature-media">
-          <img src="../static/img/card/card-image.png" alt="">
-        </div>
-      </div>
-      <div class="mzp-c-card-feature-content">
-        <div class="mzp-c-card-feature-content-container">
-            <h2 class="mzp-c-card-feature-title">Here's how using Firefox unfucks your interneting</h2>
-            <p class="mzp-c-card-feature-desc">
-              A longer description for more detailed copy. Here we have room for several sentences,
-              but try not to make a paragraph too long as this will take up more space on smaller screens.
-              Copy will also be on average 1/3 longer than English when translated to different languages,
-              so try to keep sentences short and concise.
-            </p>
-            <p><a href="#" class="mzp-c-cta-link">Meet Mozilla</a></p>
-        </div>
-      </div>
-    </section>
+  <h2 class="c-section-title">Here’s how using Firefox unfucks the internet</h2>
+
+  <div class="mzp-l-content mzp-t-content-lg">
+    {{ card(
+      class='mzp-c-card-large',
+      ga_title='',
+      image_url='',
+      aspect_ratio='mzp-has-aspect-16-9',
+      link_url='',
+      heading_level=3
+    )}}
+
+    <div class="mzp-l-card-half">
+      {{ card(
+        title='Firefox',
+        ga_title='card-firefox',
+        image_url='',
+        link_url='',
+        heading_level=3,
+        desc='It’s an amazing place. But we can all feel the way it’s fcked, too. The first and easiest thing you can do to unfck it? Start using a non-profit-backed browser that doesn’t spy on its users',
+        cta='learn more'
+      )}}
+      {{ card(
+        title='Mozilla',
+        ga_title='card-mozilla',
+        image_url='',
+        link_url='',
+        heading_level=3,
+        desc='It’s an amazing place. But we can all feel the way it’s fcked, too. The first and easiest thing you can do to unfck it? Start using a non-profit-backed browser that doesn’t spy on its users',
+        cta='learn more'
+      )}}
+    </div>
   </div>
+
 
 </main>
 {% endblock %}

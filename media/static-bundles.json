@@ -723,7 +723,7 @@
     },
     {
       "files": [
-        "css/firefox/campaign/unfck.scss"
+        "css/firefox/unfck.scss"
       ],
       "name": "firefox-unfck"
     }

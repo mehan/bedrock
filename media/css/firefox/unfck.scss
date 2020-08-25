@@ -69,7 +69,7 @@ main {
     & .mzp-c-card-feature-desc,
     & .mzp-c-hero {
         @include light-links;
-        background-color: $color-purple-90;
+        background-color: $color-ink-80;
         color: $color-white;
     }
 
@@ -127,7 +127,7 @@ main {
     }
 
     .choice-unfck-img {
-        background-color: $color-purple-50;
+        background-color: $color-violet-50;
         display: block;
         width: $layout-xl;
         height: $layout-xl;
@@ -224,5 +224,5 @@ main {
 
 .t-unfck .mzp-c-card-media-wrapper,
 .t-unfck .mzp-c-card-image {
-    background-color: $color-purple-40;
+    background-color: $color-violet-40;
 }

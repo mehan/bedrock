@@ -19,10 +19,9 @@
 {% block content %}
 <main role="main" class="t-unfck">
 
-
   {% call hero(
-    title='The Internet Fck Yeah',
-    desc='It’s an amazing place. But we can all feel the way it’s fcked, too. The first and easiest thing you can do to unfck it? Start using a non-profit-backed browser that doesn’t spy on its users',
+    title='The internet: Fck Yeah',
+    desc='It’s an amazing place. But we can all feel the ways it’s fcked, too. The first and easiest thing you can do to unfck it? Start using a non-profit-backed browser that doesn’t spy on its users.',
     class='mzp-t-firefox mzp-t-dark',
     include_cta=True,
     heading_level=1)
@@ -30,7 +29,7 @@
     {{ download_firefox(download_location='primary cta') }}
   {% endcall %}
 
-  <h2 class="c-section-title">The Unfucking Checklist</h2>
+  <h2 class="c-section-title">The Unfcking Checklist</h2>
 
   <div class="mzp-l-content mzp-t-content-lg">
 
@@ -48,19 +47,35 @@
     {%- endmacro %}
 
     {{ choice(
-      'Take action online. Change the outcome offline',
-      'Where you live is one fo the most common data points used to target you online. Join us in changing your location on FB and Insta to Waco, TX, so we can throw off political ads and shine a light on voter suppression.',
-      'See how it works',
+      'Take action online. Change the outcome offline.',
+      'Where you live is one of the most common data points used to target you online. Join us in changing your location on FB and Insta to Waco, TX, so we can throw off political ads and shine a light on voter suppression.',
+      'How it Works',
       '#',
       'location'
     ) }}
 
     {{ choice(
-      'Netflix and change',
-      'Watch The Social Dilemma on Netflix, a doc made with our friends at the CEnter for Humane Tech. It explains this whol data situation in words and actions real people can understand.',
-      'Watch the doc',
+      'Tell us what you wanna unfck',
+      'Maybe we can find new ways to solve it together. After all, we make internet products, pressure our peers, and speak truth to government power.',
+      'TODO',
       '#',
-      'netflix'
+      'tell'
+    ) }}
+
+    {{ choice(
+      'Netflix and change',
+      'Watch The Social Dilemma on Netflix, a doc made with our friends at the Center for Humane Tech. It explains this whole data situation in words and actions real people can understand.',
+      'Watch the Doc',
+      '#',
+      'watch'
+    ) }}
+
+    {{ choice(
+      'Join the anti-establishment',
+      'The more people who use independent tech like Firefox, the greater the unfck effect. Get yourself some unfcked search results, email providers, productivity docs and more.',
+      'Unfck More',
+      '#',
+      'join'
     ) }}
   </div>
 
@@ -70,7 +85,7 @@
     {{ card(
       class='mzp-c-card-large',
       ga_title='',
-      image_url='',
+      image_url='img/placeholder.png',
       aspect_ratio='mzp-has-aspect-16-9',
       link_url='',
       heading_level=3
@@ -78,22 +93,23 @@
 
     <div class="mzp-l-card-half">
       {{ card(
-        title='Firefox',
+        title='And here’s how Firefox unfcks your internetting',
         ga_title='card-firefox',
-        image_url='',
+        image_url='img/placeholder.png',
         link_url='',
         heading_level=3,
-        desc='It’s an amazing place. But we can all feel the way it’s fcked, too. The first and easiest thing you can do to unfck it? Start using a non-profit-backed browser that doesn’t spy on its users',
+        desc='The Firefox browser is built to protect your privacy at every turn — because that’s the fastest way to free you from slow loads, bad ads, hackers and trackers — while clearing the way for more freedom, more youness, more magic. ',
         cta='learn more'
       )}}
+
       {{ card(
-        title='Mozilla',
+        title='People over profits. Always.',
         ga_title='card-mozilla',
-        image_url='',
+        image_url='img/placeholder.png',
         link_url='',
         heading_level=3,
-        desc='It’s an amazing place. But we can all feel the way it’s fcked, too. The first and easiest thing you can do to unfck it? Start using a non-profit-backed browser that doesn’t spy on its users',
-        cta='learn more'
+        desc='Firefox was founded in 2002 for the expressed purpose of breaking up a monopoly. Our parent company is a non-profit. The Wall Street Journal has called us “the Bernie Sanders” of browsers, and we’re here for it. Because we’ll never stop fighting for what we believe in: a safe, accessible, and welcoming internet for all.',
+        cta='Meet Mozilla'
       )}}
     </div>
   </div>

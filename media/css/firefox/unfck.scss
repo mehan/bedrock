@@ -5,11 +5,13 @@
 $font-path: '/media/fonts';
 $image-path: '/media/protocol/img';
 @import '../../protocol/css/includes/lib';
+@import '../../protocol/css/includes/forms/lib';
 
 @import '../../protocol/css/components/card';
 @import '../../protocol/css/components/feature-card';
-@import '../../protocol/css/components/forms/choice';
+// @import '../../protocol/css/components/forms/choice';
 @import '../../protocol/css/components/hero';
+@import '../../protocol/css/components/notification-bar';
 @import '../../protocol/css/templates/card-layout';
 // @import '../../../protocol/css/components/zap';
 
@@ -76,6 +78,14 @@ main {
     a.mzp-c-button.download-link {
         background-color: $color-green-30;
         color: $color-ink-90;
+
+        &:hover {
+            background-color: $color-green-50;
+        }
+
+        &:focus {
+            box-shadow: $field-focus-ring-dark;
+        }
     }
 
     .fx-privacy-link {
@@ -102,41 +112,175 @@ main {
 }
 
 
+.mzp-c-notification-bar.mzp-is-sticky {
+    top: 100px;
+}
+
 
 // --------------------------------------------------------------------------
 // section titles
 
-.t-choice-unfck {
-    // TODO - what should cursor be?
-    padding-bottom: $layout-lg;
+.c-item-unfck {
+    padding-bottom: $layout-xl;
+    padding-left: 200px;
+    position: relative;
 
-    .mzp-c-choice-control {
-        &[type=checkbox]:focus + label::before {
-            border-color: $field-border-color-hover;
-            box-shadow: $field-focus-ring-dark;
-        }
-    }
-
-    .mzp-c-choice-label {
-        @include bidi(((padding-left, 200px, padding-right, 0),));
-        @include font-size(16px);
-    }
-
-    .mzp-c-choice-info {
-        @include bidi(((padding-left, 200px, padding-right, 0),));
-    }
-
-    .choice-unfck-img {
-        background-color: $color-violet-50;
-        display: block;
-        width: $layout-xl;
-        height: $layout-xl;
-        position: absolute;
-        top: 0;
-        left: $choice-spacing;
+    h3 {
+        @include font-size(18px);
     }
 }
 
+.c-item-img {
+    position: absolute;
+    top: 0;
+    left:0;
+    bottom: $layout-xl;
+    width: 200px;
+}
+
+.c-item-gif {
+    position: absolute;
+    top: 0;
+    left: 40px;
+    width: 140px;
+    max-width: 140px;
+
+    .c-item-img:hover & {
+        opacity: 0.2;
+    }
+}
+
+.c-item-share {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    button,
+    a {
+        background-color: transparent;
+        border: 0;
+        color: $color-white;
+        overflow: hidden;
+        padding: 0;
+        white-space: nowrap;
+        width: 24px;
+        text-align: left;
+        display: inline-block;
+
+        .c-item-img:hover & {
+            width: auto;
+        }
+    }
+}
+
+.c-item-share span {
+    @include image-replaced;
+    background-repeat: no-repeat;
+    background-size: 24px auto;
+    display: inline-block;
+    height: 24px;
+    width: 24px;
+    margin-right: $spacing-sm;
+
+    &.twitter {
+        background-image: url('#{$image-path}/icons/social/twitter/white.svg');
+    }
+    &.download {
+        background-image: url('#{$image-path}/icons/download.svg');
+        filter: invert(100%);
+    }
+    &.link {
+        background-image: url('#{$image-path}/icons/link.svg');
+        filter: invert(100%);
+    }
+}
+
+// .t-choice-unfck {
+//     // TODO - what should cursor be?
+//     padding-bottom: $layout-lg;
+
+//     .mzp-c-choice-label {
+//         @include bidi(((padding-left, 200px, padding-right, 0),));
+//         @include font-size(18px);
+//         padding-top: 0;
+//     }
+
+//     .mzp-c-choice-info {
+//         @include bidi(((padding-left, 200px, padding-right, 0),));
+//     }
+
+//     .choice-unfck-img {
+//         background-color: $color-violet-50;
+//         display: block;
+//         width: $layout-xl;
+//         height: $layout-xl;
+//         position: absolute;
+//         top: 0;
+//         left: $choice-spacing;
+//     }
+// }
+// skin
+
+// .t-choice-unfck .mzp-c-choice-control {
+
+//     &[type=checkbox] + label::before {
+//         background-color: $color-ink-10;
+//         border-color: $color-green-30;
+//     }
+
+//     &[type=checkbox]:checked + label::before {
+//         background-color: $color-ink-90;
+//         border-color: $color-green-30;
+//     }
+
+//     // hover
+//     &[type=checkbox]:hover + label::before,
+//     &[type=checkbox] + label:hover::before {
+//         border-color: $color-yellow-05;
+//     }
+
+//     // focus
+//     &[type=checkbox]:focus + label::before {
+//         border-color: $color-yellow-05;
+//         box-shadow: $field-focus-ring-dark;
+//     }
+
+//     &[type=checkbox]:checked + label::after {
+//         border-bottom: remify(3px) solid $color-green-30;
+//         border-right: remify(3px) solid $color-green-30;
+//     }
+// }
+
+.c-tell-input {
+    background-color: $color-yellow-05;
+    border-color: $color-green-30;
+    color: $color-ink-90;
+    width: 100%;
+
+    &:hover {
+        border-color: $color-yellow-05;
+    }
+
+    &:focus {
+        border-color: $color-yellow-05;
+        box-shadow: $field-focus-ring-dark;
+    }
+}
+
+.c-tell-button.mzp-c-button.mzp-t-secondary {
+    border-color: $color-green-30;
+    color: $color-green-30;
+
+    &:hover {
+        background-color: $color-green-50;
+        border-color: $color-green-50;
+        color: $color-ink-90;
+    }
+
+    &:focus {
+        box-shadow: $field-focus-ring-dark;
+    }
+}
 
 // --------------------------------------------------------------------------
 // section titles

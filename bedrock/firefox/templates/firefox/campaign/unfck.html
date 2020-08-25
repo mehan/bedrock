@@ -33,6 +33,10 @@
 
   <div class="mzp-l-content mzp-t-content-lg">
 
+    <aside id="bar" class="hidden mzp-c-notification-bar mzp-t-success mzp-is-sticky">
+      <p>Great! You clicked the thing!</p>
+    </aside>
+
     {% macro choice(label, info, link_text, link_url, id) -%}
     <div class="mzp-c-choice t-choice-unfck" id="{{ id }}">
       <input class="mzp-c-choice-control" type="checkbox" id="check-{{ id }}">
@@ -46,37 +50,69 @@
     </div>
     {%- endmacro %}
 
-    {{ choice(
+    {% macro item(label, info, link_text, link_url, id, include_cta=False) -%}
+    <div class="c-item-unfck" id="{{ id }}">
+      <h3>{{ label }}</h3>
+      <p>{{ info }}</p>
+      {% if include_cta %}
+        {{ caller() }}
+      {% else %}
+        {# TODO, no referrals or rel if not external link #}
+        <p><a href="{{ link_url }}{{ referrals }}" class="mzp-c-cta-link" rel="external noopener" data-cta-type="link" data-cta-text="Checklist: {{ id }}">{{ link_text }}</a></p>
+      {% endif %}
+
+      <div class="c-item-img">
+        <img class="c-item-gif" src="{{ static('img/firefox/campaign/unfck/firecode.gif') }}">
+        <ul class="c-item-share">
+          <!-- TODO: GA props -->
+          <li><a class="js-twitter-share" target="_blank" rel="noopener noreferrer" href="https://www.twitter.com/intent/tweet?url=https%3A%2F%2Fmzl.la%2Fmanifesto&text=I+support+the+vision+of+a+better%2C+healthier+internet+from+%40mozilla%2C+will+you+join+me%3F" data-link-type="social share" data-link-name="Twitter"><span class="twitter"></span>Share</a></li>
+          <li><a href="{{ static('img/firefox/campaign/unfck/firecode.gif') }}" download><span class="download"></span>Download</a></li>
+          <li><button class="js-copy-link" type="button" data-clipboard-text="https://bukk.it/firecode.gif"><span class="link"></span>Copy Link</button></li>
+        </ul>
+      </div>
+    </div>
+    {%- endmacro %}
+
+    {% call item(
       'Take action online. Change the outcome offline.',
       'Where you live is one of the most common data points used to target you online. Join us in changing your location on FB and Insta to Waco, TX, so we can throw off political ads and shine a light on voter suppression.',
       'How it Works',
       '#',
       'location'
-    ) }}
+    ) %}{% endcall %}
 
-    {{ choice(
+    {% call item(
       'Tell us what you wanna unfck',
       'Maybe we can find new ways to solve it together. After all, we make internet products, pressure our peers, and speak truth to government power.',
-      'TODO',
+      'How it Works',
       '#',
-      'tell'
-    ) }}
+      'tell',
+      include_cta=True
+      ) %}
+      TODO
+      <!--
+      <div class="c-tell">
+        <textarea class="c-tell-input"></textarea>
+        <button class="c-tell-button mzp-c-button mzp-t-secondary">Submit</button>
+      </div>
+      -->
+      {% endcall %}
 
-    {{ choice(
+    {% call item(
       'Netflix and change',
       'Watch The Social Dilemma on Netflix, a doc made with our friends at the Center for Humane Tech. It explains this whole data situation in words and actions real people can understand.',
       'Watch the Doc',
       '#',
       'watch'
-    ) }}
+      ) %}{% endcall %}
 
-    {{ choice(
+      {% call item(
       'Join the anti-establishment',
       'The more people who use independent tech like Firefox, the greater the unfck effect. Get yourself some unfcked search results, email providers, productivity docs and more.',
       'Unfck More',
       '#',
       'join'
-    ) }}
+      ) %}{% endcall %}
   </div>
 
   <h2 class="c-section-title">Here’s how using Firefox unfucks the internet</h2>

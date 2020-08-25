@@ -1345,6 +1345,7 @@
     },
     {
       "files": [
+        "js/libs/clipboard.min.js",
         "js/firefox/campaign/unfck.js"
       ],
       "name": "firefox-unfck"
